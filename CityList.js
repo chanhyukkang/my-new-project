@@ -27,7 +27,6 @@ import { Constants } from 'expo';
     fetch('http://demo6468405.mockable.io/weather-crawlers/cities')
       .then(response => response.json())
       .then(cities => {
-        console.log('cities =', cities.length);
         this.setState({
           cities
         });

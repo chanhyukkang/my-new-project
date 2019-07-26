@@ -50,7 +50,7 @@ render() {
      let tempmin = this.state.main.temp_min -273.15;
      let tempmax = this.state.main.temp_max -273.15;
      let weatherdescription = this.state.weather[0].description;
-     let weatherIcon = this.state.weather.icon;
+     let weatherIcon = this.state.weather[0].icon;
 
    return(
        <View style={styles.container}>
@@ -65,7 +65,7 @@ render() {
         </Text>
         <Image
             style={styles.icon}
-            source = {{uri : `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}}
+            source = {{uri : `https://openweathermap.org/img/wn/${weatherIcon}@2x.png` }}
         />
        </View>
         );
@@ -96,12 +96,15 @@ render() {
          margin: 5,
       },
       icon: {
-        backgroundColor: 'white',
-        width: 200,
-        height: 200,
-        marginTop: 90,
-        marginLeft: 110,
+        backgroundColor: '#77b5fe',
+        width: 250,
+        height: 250,
+        marginTop: 70,
+        marginLeft: 82,
         borderRadius: 20,
+        borderColor:'white',
+        borderWidth: 3,
+
       }
 
 });
