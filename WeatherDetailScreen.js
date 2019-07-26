@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
 import { Constants } from 'expo';
 
  export default class WeatherDetailScreen extends React.Component {
@@ -13,13 +13,13 @@ import { Constants } from 'expo';
        };
   };
 
-constructor(props) {
-    super(props);
+    constructor(props) {
+     super(props);
 
      this.state = {
       isLoading: true,
-    };
-  }
+     };
+   }
 
    componentDidMount() {
     const { navigation } = this.props;
@@ -50,8 +50,7 @@ render() {
      let tempmin = this.state.main.temp_min -273.15;
      let tempmax = this.state.main.temp_max -273.15;
      let weatherdescription = this.state.weather[0].description;
-     //let weatherIcon = this.state.weather.icon;
-
+     let weatherIcon = this.state.weather.icon;
 
    return(
        <View style={styles.container}>
@@ -64,10 +63,12 @@ render() {
         <Text style={styles.temperature}>
               최고 / 최저기온 : {tempmax.toFixed(1)}°C / {tempmin.toFixed(1)}°C
         </Text>
-
+        <Image
+            style={styles.icon}
+            source = {{uri : `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}}
+        />
        </View>
         );
-
     }
 }
 
@@ -75,9 +76,7 @@ render() {
       container: {
         flex: 1,
         backgroundColor: '#4169e1',
-
       },
-
       loading: {
        fontSize: 15,
         color: '#0f046a',
@@ -95,8 +94,15 @@ render() {
           color: 'white',
          textAlign: 'center',
          margin: 5,
+      },
+      icon: {
+        backgroundColor: 'white',
+        width: 200,
+        height: 200,
+        marginTop: 90,
+        marginLeft: 110,
+        borderRadius: 20,
       }
-
 
 });
 
