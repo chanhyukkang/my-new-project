@@ -6,6 +6,10 @@ import { Constants } from 'expo';
   static navigationOptions = ({ navigation }) => {
     return{
          title: `          ${navigation.getParam('city', 'Unknown')} : 오늘의 날씨`,
+         headerTintColor: '#0f046a',
+                 headerTitleStyle: {
+                   fontWeight: 'bold',
+                 },
        };
   };
 
@@ -19,12 +23,15 @@ constructor(props) {
 
    componentDidMount() {
     const { navigation } = this.props;
-    //const city = navigation.getParam('city', null);
+    //const city = navigation.getParam('city', 'Unknown');
    const city = 'Daejeon';
 
-     fetch(`http://demo6468405.mockable.io/weather-crawlers/current-weathers/by-city-name/${city}`)
+//  fetch('http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dee70819bfec5dc8f2eef976482b0987')
+
+fetch(`http://demo6468405.mockable.io/weather-crawlers/current-weathers/by-city-name/${city}`)
       .then(response => response.json())
       .then(info => {
+      console.log(info);
         this.setState({
           ...info,
           isLoading: false,
@@ -33,6 +40,7 @@ constructor(props) {
   }
 
 render() {
+
     if (this.state.isLoading) {
       return (
         <View style={styles.container}>
@@ -74,7 +82,7 @@ render() {
 
       },
       loading: {
-        color: 'blue',
+        color: '#0f046a',
         textAlign: 'center',
         marginTop: 300,
       },

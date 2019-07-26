@@ -6,6 +6,13 @@ import { Constants } from 'expo';
 
  static navigationOptions = {
     title: '         날씨가 궁금한 도시를 선택해주세요',
+    //headerStyle: {
+      //    backgroundColor: '#000066',
+        //},
+        headerTintColor: '#0f046a',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
  };
 
   constructor(props) {
