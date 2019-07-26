@@ -44,7 +44,7 @@ render() {
     if (this.state.isLoading) {
       return (
         <View style={styles.container}>
-          <Text style ={styles.loading}>데이터를 불러오는 중입니다.</Text>
+          <Text style ={styles.loading}>날씨 정보를 가져오고 있습니다!</Text>
         </View>
       )
     }
