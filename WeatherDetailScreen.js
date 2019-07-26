@@ -5,7 +5,7 @@ import { Constants } from 'expo';
  export default class WeatherDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return{
-         title: `          ${navigation.getParam('city', 'Unknown')} : 오늘의 날씨`,
+         title: `          ${navigation.getParam('city', 'Unknown')} 오늘의 날씨`,
          headerTintColor: '#0f046a',
                  headerTitleStyle: {
                    fontWeight: 'bold',
@@ -23,12 +23,9 @@ constructor(props) {
 
    componentDidMount() {
     const { navigation } = this.props;
-    //const city = navigation.getParam('city', 'Unknown');
-   const city = 'Daejeon';
+    const city = navigation.getParam('city', 'Unknown');
 
-//  fetch('http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dee70819bfec5dc8f2eef976482b0987')
-
-fetch(`http://demo6468405.mockable.io/weather-crawlers/current-weathers/by-city-name/${city}`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dee70819bfec5dc8f2eef976482b0987`)
       .then(response => response.json())
       .then(info => {
       console.log(info);
@@ -71,7 +68,6 @@ render() {
        </View>
         );
 
-
     }
 }
 
@@ -81,7 +77,9 @@ render() {
         backgroundColor: '#4169e1',
 
       },
+
       loading: {
+       fontSize: 15,
         color: '#0f046a',
         textAlign: 'center',
         marginTop: 300,
@@ -98,6 +96,7 @@ render() {
          textAlign: 'center',
          margin: 5,
       }
+
 
 });
 
